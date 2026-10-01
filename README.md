@@ -19,15 +19,18 @@ Running time is about 1 min 40 s, rendered at 1080p and 60 fps.
 ```bash
 # Ubuntu / Debian
 sudo apt install ffmpeg libcairo2-dev libpango1.0-dev pkg-config \
-                 texlive texlive-latex-extra dvisvgm fonts-noto-core
+                 texlive texlive-latex-extra dvisvgm fonts-cmu
 # macOS
 brew install ffmpeg py3cairo pango pkg-config && brew install --cask mactex-no-gui
 
 pip install manim
 ```
 
-Captions use the **Noto Sans** font, which covers ə, ş, ğ, ı, ö, ü and ç. To use a different
-font such as Inter, change `FONT` at the top of the file.
+Captions use **CMU Serif**, the Unicode version of LaTeX's Computer Modern, so they match the
+formulas and the usual 3Blue1Brown look. It covers every Azerbaijani letter, including ə.
+On Linux it comes from the `fonts-cmu` package. On macOS and Windows, download it from
+[CTAN cm-unicode](https://ctan.org/pkg/cm-unicode) and install the `.otf` files.
+To use another font, change `FONT` at the top of the file.
 
 ### Render
 

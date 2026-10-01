@@ -12,8 +12,11 @@ QURAŞDIRMA
     #    macOS:          brew install ffmpeg py3cairo pango pkg-config
     #                    brew install --cask mactex-no-gui
     #    Ubuntu/Debian:  sudo apt install ffmpeg libcairo2-dev libpango1.0-dev pkg-config \
-    #                        texlive texlive-latex-extra dvisvgm fonts-noto-core
-    #    Windows:        choco install ffmpeg miktex   (+ "Noto Sans" şriftini quraşdırın)
+    #                        texlive texlive-latex-extra dvisvgm fonts-cmu
+    #    Windows:        choco install ffmpeg miktex   (+ "CMU Serif" şriftini quraşdırın, aşağıya baxın)
+    #
+    #    "CMU Serif" şrifti Linux-da fonts-cmu paketindədir; macOS/Windows üçün
+    #    https://ctan.org/pkg/cm-unicode ünvanından yükləyib .otf fayllarını quraşdırın.
     #
     # 2) Python paketi (Python 3.10+)
     pip install manim
@@ -53,7 +56,9 @@ config.background_color = BLACK
 # ═════════════════════════════════════════════════════════════════════════════
 #  MƏTN
 # ═════════════════════════════════════════════════════════════════════════════
-FONT = "Noto Sans"          # ə ş ğ ı ö ü ç dəstəklənir; alternativ: "Inter"
+# Computer Modern (LaTeX-in və 3Blue1Brown videolarının şrifti) — Unicode versiyası
+# ə ş ğ ı İ ö ü ç hərflərinin hamısını dəstəkləyir və düsturlarla eyni görünür.
+FONT = "CMU Serif"
 CAPTION_SIZE = 34           # alt yazıların ölçüsü
 TEX_SIZE = 48               # yuxarıdakı düsturların ölçüsü
 BIG_TEX = 58                # ekranın ortasındakı düsturların ölçüsü
