@@ -1,5 +1,53 @@
 # Visual Math Content
 
+## Qauss inteqralı: ∫ e^(−x²) dx = √π
+
+`gaussian_integral.py` is a silent visual proof in the style of 3Blue1Brown, built with
+[Manim Community](https://www.manim.community/). All on-screen text is in Azerbaijani.
+
+The video starts from the 2D bell curve, squares the integral, and lifts it into 3D as the
+volume under `z = e^(−(x²+y²))`. Cross-sections show that this volume is `I · I`. Seen from
+above, the surface is circularly symmetric, so the volume is split into cylindrical shells.
+One shell is pulled out and unrolled into a flat `2πr × e^(−r²) × dr` plate. Adding up the
+shells gives `I² = π`, so `I = √π`. At the end, the blue area under the curve pours into a
+`1 × √π` rectangle and fills it exactly.
+
+Running time is about 1 min 40 s, rendered at 1080p and 60 fps.
+
+### Install
+
+```bash
+# Ubuntu / Debian
+sudo apt install ffmpeg libcairo2-dev libpango1.0-dev pkg-config \
+                 texlive texlive-latex-extra dvisvgm fonts-noto-core
+# macOS
+brew install ffmpeg py3cairo pango pkg-config && brew install --cask mactex-no-gui
+
+pip install manim
+```
+
+Captions use the **Noto Sans** font, which covers ə, ş, ğ, ı, ö, ü and ç. To use a different
+font such as Inter, change `FONT` at the top of the file.
+
+### Render
+
+```bash
+manim -pql gaussian_integral.py GaussianIntegral   # 480p15, quick preview
+manim -pqh gaussian_integral.py GaussianIntegral   # 1080p60, final quality
+```
+
+The output is written to `media/videos/gaussian_integral/1080p60/GaussianIntegral.mp4`.
+
+### Adjusting it
+
+* The file has one method per scene, `scene_1_bell_curve` to `scene_9_final`. Each method's
+  header gives its target length and the camera it uses.
+* Camera angles are the `FRONT`, `VIEW3D` and `TOP` presets near the top of the file.
+* `PACE` scales every animation and pause at once.
+* `make_shell(r, dr, ...)` builds a cylindrical shell. `unroll_shell(...)` is the animation
+  that flattens it into a plate. `morph_shell(...)` animates any of the shell's parameters,
+  such as its height, its position or how far it is unrolled.
+
 ## Why is the area of a circle πr²?
 
 `circle_area.py` is a narrated visual proof in the style of 3Blue1Brown, built with
