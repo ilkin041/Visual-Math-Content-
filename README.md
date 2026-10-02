@@ -88,7 +88,7 @@ of which (A, B) lie on the same side of the foot H of the perpendicular. Then
 AB ≤ HB < PB, and comparing two expressions for the area of triangle PAB gives
 h' = d(A, PB) = (AB/PB)·h < h, although (A, PB) is also such a pair.
 
-Running time is about 1 minute 45 seconds, rendered at 1080p and 60 fps.
+Running time is about 2 minutes 55 seconds, rendered at 1080p and 60 fps.
 
 ### Install
 
@@ -121,7 +121,8 @@ The output is written to `media/videos/concurrent_lines/1080p60/ConcurrentLines.
 ### Adjusting it
 
 Everything you are likely to change is defined as a constant at the top of the file:
-colors, the font (`FONT`), transition times (`T_FAST`, `T_MED`, `T_SLOW`, `PAUSE`), the
+colors, the font (`FONT`), the overall pace (`TEMPO`, which scales every transition and
+pause; 1.0 is the original faster cut), transition times (`T_FAST`, `T_MED`, `T_SLOW`, `PAUSE`), the
 canonical points (`H_PT`, `P_PT`, `A_PT`, `B_PT`, `C_PT`), and the line configurations for
 scenes 1, 2–3 and 9 (`SCENE1_LINES`, `SCHEMATIC_LINES`). Each scene is a separate
 `sceneN_...` method of `ConcurrentLines`. All geometry (intersections, feet of perpendiculars,

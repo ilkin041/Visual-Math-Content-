@@ -80,12 +80,13 @@ RA_SIZE = 0.2                # düz bucaq işarəsi
 DASH = 0.12                  # qırıq xəttin addımı
 
 # ── Vaxtlar (saniyə) ─────────────────────────────────────────────────────────
-T_FAST = 0.6
-T_MED = 1.0
-T_SLOW = 1.5
-PAUSE = 0.5                  # mətn oxunsun deyə qısa fasilə
-T_PAIR_IN = 0.5              # Səhnə 3: bir cütün göstərilməsi
-T_PAIR_OUT = 0.4             # Səhnə 3: məsafənin oxa düşməsi
+TEMPO = 1.6                  # bütün keçidləri birlikdə yavaşladır: 1.0 — əvvəlki sürət, böyük — daha yavaş
+T_FAST = 0.6 * TEMPO
+T_MED = 1.0 * TEMPO
+T_SLOW = 1.5 * TEMPO
+PAUSE = 0.6 * TEMPO          # mətn oxunsun deyə fasilə
+T_PAIR_IN = 0.5 * TEMPO      # Səhnə 3: bir cütün göstərilməsi
+T_PAIR_OUT = 0.4 * TEMPO     # Səhnə 3: məsafənin oxa düşməsi
 FINAL_HOLD = 2.0             # sonda gözləmə
 
 # ── Səhnə (xətlər yalnız bu düzbucaqlıda çəkilir; aşağı zolaq mətn üçündür) ──
