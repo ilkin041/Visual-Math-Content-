@@ -72,3 +72,60 @@ The file is split into commented `SCENE 1` to `SCENE 6` blocks. Each narration l
 `with self.voiceover(text=...)` block, and `split(tracker.duration, ...)` divides that
 line's time among its animations. Constants at the top control the radius, colors, pause
 length, and how the wedges are shaded (`COLOR_BY_HALF`).
+
+## If every intersection has a third line, all the lines are concurrent
+
+`concurrent_lines.py` is a silent visual proof (no narration, no branding) with all
+on-screen text in Azerbaijani. The problem: finitely many pairwise non-parallel lines are
+given, and through the intersection of any two of them passes another one of the lines.
+Then all the lines pass through one point.
+
+The proof is by contradiction with the smallest-distance argument. Among all pairs
+(intersection point P, given line ℓ not through P) take the one with the smallest distance
+h = d(P, ℓ). At least three lines pass through P and they cut ℓ at three distinct points, two
+of which (A, B) lie on the same side of the foot H of the perpendicular. Then
+AB ≤ HB < PB, and comparing two expressions for the area of triangle PAB gives
+h' = d(A, PB) = (AB/PB)·h < h, although (A, PB) is also such a pair.
+
+Running time is about 1 minute 45 seconds, rendered at 1080p and 60 fps.
+
+### Install
+
+System packages (Cairo/Pango, ffmpeg, LaTeX for the formulas, and the Noto Sans font for
+the Azerbaijani letters ə, ş, ğ, ı, İ):
+
+```bash
+# Ubuntu / Debian
+sudo apt install ffmpeg libcairo2-dev libpango1.0-dev pkg-config \
+                 texlive texlive-latex-extra dvisvgm fonts-noto-core
+
+# macOS
+brew install ffmpeg py3cairo pango pkg-config
+brew install --cask mactex-no-gui font-noto-sans
+```
+
+```bash
+pip install manim
+```
+
+### Render
+
+```bash
+manim -pql concurrent_lines.py ConcurrentLines             # 480p15, quick preview
+manim -pqh --fps 60 concurrent_lines.py ConcurrentLines    # 1080p60, final quality
+```
+
+The output is written to `media/videos/concurrent_lines/1080p60/ConcurrentLines.mp4`.
+
+### Adjusting it
+
+Everything you are likely to change is defined as a constant at the top of the file:
+colors, the font (`FONT`), transition times (`T_FAST`, `T_MED`, `T_SLOW`, `PAUSE`), the
+canonical points (`H_PT`, `P_PT`, `A_PT`, `B_PT`, `C_PT`), and the line configurations for
+scenes 1, 2–3 and 9 (`SCENE1_LINES`, `SCHEMATIC_LINES`). Each scene is a separate
+`sceneN_...` method of `ConcurrentLines`. All geometry (intersections, feet of perpendiculars,
+distances, h') is computed with numpy from those constants.
+
+Lines are clipped to the area above the caption strip (`STAGE`), so captions at the bottom
+never overlap a line. Set the bottom of `STAGE` to `-FRAME_Y` to run the lines to the
+bottom edge of the frame instead.
