@@ -76,7 +76,8 @@ length, and how the wedges are shaded (`COLOR_BY_HALF`).
 ## If every intersection has a third line, all the lines are concurrent
 
 `concurrent_lines.py` is a silent visual proof (no narration, no branding) with all
-on-screen text in Azerbaijani. The problem: finitely many pairwise non-parallel lines are
+on-screen text in Azerbaijani, set in CMU Serif (the Unicode version of LaTeX's Computer
+Modern) so captions match the formulas. The problem: finitely many pairwise non-parallel lines are
 given, and through the intersection of any two of them passes another one of the lines.
 Then all the lines pass through one point.
 
@@ -91,17 +92,17 @@ Running time is about 1 minute 45 seconds, rendered at 1080p and 60 fps.
 
 ### Install
 
-System packages (Cairo/Pango, ffmpeg, LaTeX for the formulas, and the Noto Sans font for
-the Azerbaijani letters ə, ş, ğ, ı, İ):
+System packages (Cairo/Pango, ffmpeg, LaTeX for the formulas, and the CMU Serif font,
+which has the Azerbaijani letters ə, Ə, ş, ğ, ı, İ):
 
 ```bash
 # Ubuntu / Debian
 sudo apt install ffmpeg libcairo2-dev libpango1.0-dev pkg-config \
-                 texlive texlive-latex-extra dvisvgm fonts-noto-core
+                 texlive texlive-latex-extra dvisvgm fonts-cmu
 
 # macOS
 brew install ffmpeg py3cairo pango pkg-config
-brew install --cask mactex-no-gui font-noto-sans
+brew install --cask mactex-no-gui font-computer-modern
 ```
 
 ```bash

@@ -16,11 +16,11 @@ MƏSƏLƏ
     h' = d(A, PB) = (AB/PB)·h < h. (A, PB) da uyğun cütdür — ziddiyyət.
 
 QURAŞDIRMA
-    # Sistem paketləri (Cairo/Pango, ffmpeg, LaTeX, Noto Sans şrifti)
+    # Sistem paketləri (Cairo/Pango, ffmpeg, LaTeX, CMU Serif şrifti)
     #   Ubuntu/Debian: sudo apt install ffmpeg libcairo2-dev libpango1.0-dev \
-    #                      pkg-config texlive texlive-latex-extra dvisvgm fonts-noto-core
+    #                      pkg-config texlive texlive-latex-extra dvisvgm fonts-cmu
     #   macOS:         brew install ffmpeg py3cairo pango pkg-config
-    #                  brew install --cask mactex-no-gui font-noto-sans
+    #                  brew install --cask mactex-no-gui font-computer-modern
     pip install manim
 
 RENDER
@@ -64,12 +64,12 @@ DIM_OPACITY = 0.25           # zəiflədilmiş PC xətti və C nöqtəsi
 TRI_OPACITY = 0.3            # PAB üçbucağının doluluğu
 
 # ── Şrift və ölçülər ─────────────────────────────────────────────────────────
-FONT = "Noto Sans"           # Azərbaycan hərflərini (ə, ş, ğ, ı, ö, ü, ç, İ) dəstəkləyir
-CAPTION_SIZE = 30            # aşağıdakı izah mətni
+FONT = "CMU Serif"           # Computer Modern (LaTeX şrifti), Unicode versiyası: ə, Ə, ş, ğ, ı, İ var
+CAPTION_SIZE = 34            # aşağıdakı izah mətni
 CAPTION_BASELINE = -3.66     # izah mətninin baza xətti (ekranın aşağı kənarı)
 LABEL_SIZE = 36              # P, ℓ, H, A, B, C, h, h' etiketləri
 FORMULA_SIZE = 40            # sağ tərəfdəki düsturlar
-MATH_SCALE = 1.35            # sətir içindəki MathTex hissələri Text-ə nisbətən (böyük hərf hündürlüyü)
+MATH_SCALE = 1.34            # sətir içindəki MathTex hissələri Text-ə nisbətən (böyük hərf hündürlüyü)
 
 LINE_W = 3.0                 # sonsuz xətlər
 SEG_W = 7.0                  # ayrıca göstərilən seqmentlər
@@ -617,8 +617,9 @@ class ConcurrentLines(Scene):
                   run_time=T_FAST)
 
         formula = rich([("h", P_COLOR), "=", "d(", ("P", P_COLOR), ",", (r"\ell", ELL_COLOR), ")"],
-                       " — ən kiçik", size=34)
+                       " — ən kiçik", size=30)
         formula.move_to(SCENE3_FORMULA_POS)
+        formula.shift(LEFT * max(0.0, formula.get_right()[0] - (FRAME_X - 0.35)))
         self.play(FadeIn(formula, shift=0.2 * DOWN), run_time=T_FAST)
         self.wait(2 * PAUSE)
 
