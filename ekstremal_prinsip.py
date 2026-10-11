@@ -1286,6 +1286,11 @@ class KellyProof:
         s.play(*[FadeOut(m) for m in out], run_time=T_ANIM)
 
 
+def kelly_proof(scene, mode="points"):
+    """Kellinin isbatı (Addım 0–8): mode="points" — Hisse02, mode="lines" — Hisse03."""
+    KellyProof(scene, mode).run()
+
+
 def area_trick(scene, P, A, B, H, center=None, k=0.62):
     """Sahə fəndi: PAB üçbucağının surəti (h ilə) sağa uçur; əvvəl AB oturacaq, sonra
     surət fırlanır və PB oturacaq olur, A-dan PB-yə h' çəkilir.
@@ -2046,7 +2051,7 @@ class Hisse02_Silvester(AZScene):
         self.theorem()
         self.history()
         self.terms()
-        KellyProof(self, "points").run()
+        kelly_proof(self, "points")
         self.teacher_note()
         self.alternative()
         end_section(self)
@@ -2198,7 +2203,7 @@ class Hisse03_Dual(AZScene):
         section_title(self, "4. Dual məsələ: 20.14")
         self.duality()
         self.terms()
-        KellyProof(self, "lines").run()
+        kelly_proof(self, "lines")
         self.compare()
         end_section(self)
 
